@@ -112,3 +112,10 @@ public class Run {
         }
     }
 }
+/*
+Authors:
+Surname, initals : Student number
+Ammo, M     : 216022002
+Booysen, M  : 216062241
+Kruger, W   : 216009529
+*/
