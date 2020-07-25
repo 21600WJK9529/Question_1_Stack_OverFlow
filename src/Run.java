@@ -1,16 +1,18 @@
+import java.util.Arrays;
+
 public class Run {
     public static void main(String[] args) {
         DoubleStack ds = new DoubleStack(6);
         ds.pushStack1(0);//Position in array:0; Stack 1
-        ds.pushStack2(4);//Position in array:4; Stack 2
-        ds.pushStack2(3);//Position in array:3; Stack 2
+        ds.pushStack2(3);//Position in array:4; Stack 2
+        ds.pushStack2(4);//Position in array:3; Stack 2
         ds.pushStack1(1);//Position in array:1; Stack 1
-        ds.pushStack2(2);//Position in array:2; Stack 2
-        ds.pushStack1(5);//Position in array:5; Stack 1; Array is full after this executes.
-
+        ds.pushStack2(5);//Position in array:2; Stack 2
+        ds.pushStack1(2);//Position in array:5; Stack 1; Array is full after this executes.
         //Popping will show the element in the last position of the stack
         System.out.println("Elements in stack 1:["+ds.pop1()+","+ds.pop1()+","+ds.pop1()+"]");
         System.out.println("Elements in stack 2:["+ds.pop2()+","+ds.pop2()+","+ds.pop2()+"]");
+        System.out.println("Array content:"+ Arrays.toString(ds.array));
         //Trying to pop again must display the stack is empty message
         /*This will cause a system.exit so must be commented out once
           test screen shots are done so the code below it will run*/
@@ -18,13 +20,13 @@ public class Run {
         //ds.pop2();
 
         //Because popping removed the elements as they were called they must be re-added
-        ds.pushStack1(0);
-        ds.pushStack2(4);
-        ds.pushStack2(3);
-        ds.pushStack1(1);
-        ds.pushStack2(2);
-        ds.pushStack1(5);//Position in array:5; Stack 1; Array is full after this executes.
-        ds.pushStack1(6);//Must cause overflow message as coded in the DoubleStack file
+//        ds.pushStack1(0);
+//        ds.pushStack2(4);
+//        ds.pushStack2(3);
+//        ds.pushStack1(1);
+//        ds.pushStack2(2);
+//        ds.pushStack1(5);//Position in array:5; Stack 1; Array is full after this executes.
+//        ds.pushStack1(6);//Must cause overflow message as coded in the DoubleStack file
     }
     public static class DoubleStack {
 
@@ -51,13 +53,14 @@ public class Run {
                 //      array[head] or array[0] will be assigned the value x provided in the Run file
                 head++;
                 array[head]=x;
+                System.out.println("Stack 1 input: "+array[head]);
             }
             else{
                 /*  Should there not be at least 1 space or in other words
                     if the elements in both stacks have a total greater than
                     the size of the array/n then this message must show and
                     the program must stop                                   */
-                System.out.println("Stack Overflow");
+                System.out.println("Stack Overflow attempting to insert "+x);
                 System.exit(1);
             }
         }
@@ -72,9 +75,10 @@ public class Run {
             */
                 tail--;//the 6 is made into a 5 so that it does not exceed the array positions available
                 array[tail]=x;// the tail's first value gets added to last position and will work backwards
+                System.out.println("Stack 2 input: "+array[tail]);
             }
             else{
-                System.out.println("Stack Overflow");
+                System.out.println("Stack Overflow attempting to insert "+x);
                 System.exit(1);
             }
         }
